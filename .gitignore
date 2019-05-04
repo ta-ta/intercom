@@ -1,0 +1,11 @@
+.DS_Store
+conf
+db/__pycache__
+detect/__pycache__
+detect/*.pyc
+detect/env/__pycache__
+detect/env/local.py
+detect/log
+detect/*.wav
+master
+scripts/__pycache__
