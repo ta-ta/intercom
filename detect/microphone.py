@@ -63,12 +63,12 @@ def get_wave_stream():
     while True:
         wave_buffers = []
         for i in range(int(DETECT_PARAMETER.SAMPLING_FREQUENCY / DETECT_PARAMETER.CHUNKS * DETECT_PARAMETER.RECORD_SECONDS)):
-            # if stream.is_active(): ### todo
-            wave_buffer = stream.read(DETECT_PARAMETER.CHUNKS)
-            wave_buffers.append(wave_buffer)
-            #else:
-            #   yield b''.join(wave_buffers)
-            # wave_buffers = []
+            if stream.is_active():
+                wave_buffer = stream.read(DETECT_PARAMETER.CHUNKS)
+                wave_buffers.append(wave_buffer)
+            else:
+                yield b''.join(wave_buffers)
+                wave_buffers = []
         wave_bytes = b''.join(wave_buffers)
         yield wave_bytes
 
