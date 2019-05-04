@@ -35,7 +35,10 @@ def enqueue_wave():
         now = datetime.datetime.now()
         try:
             wave_bytes = next(wave_bytes_gen)
-            WAVE_QUEUE.put([now, wave_bytes], block=True, timeout=DETECT_PARAMETER.RECORD_SECONDS)
+            if len(wave_bytes) > 0:
+                WAVE_QUEUE.put([now, wave_bytes], block=True, timeout=DETECT_PARAMETER.RECORD_SECONDS)
+            else:
+                break
         except queue.Full as err:
             logger.exception(err)
 
