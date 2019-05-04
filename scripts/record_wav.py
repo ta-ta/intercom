@@ -7,6 +7,7 @@ PATH = os.path.dirname(os.path.abspath(__file__))
 sys.path.append(os.path.join(PATH, '../detect'))
 import detect_parameter as DETECT_PARAMETER
 import microphone
+import env.local as CONFIG
 
 # 録音秒数設定
 DETECT_PARAMETER.RECORD_SECONDS = 30
@@ -17,7 +18,7 @@ if __name__ == '__main__':
     # 録音
     microphone.set_device_index()
     if DETECT_PARAMETER.DeviceIndex < 0:
-        print('cannot connect microphone:', DETECT_PARAMETER.MICROPHONE) # マイクとの接続不可
+        print('cannot connect microphone:', CONFIG.MICROPHONE) # マイクとの接続不可
         sys.exit()
 
     print('filename:', FILENAME)

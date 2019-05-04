@@ -16,11 +16,11 @@ def set_device_index():
     DETECT_PARAMETER.DeviceIndex = -1
     iAudio = pyaudio.PyAudio()
     for i in range(iAudio.get_device_count()):
-        if DETECT_PARAMETER.MICROPHONE == iAudio.get_device_info_by_index(i)['name']:
+        if CONFIG.MICROPHONE == iAudio.get_device_info_by_index(i)['name']:
             DETECT_PARAMETER.DeviceIndex = i
             break
     else:
-        logger.warning('cannot connect microphone: %s', DETECT_PARAMETER.MICROPHONE) # マイクとの接続不可
+        logger.warning('cannot connect microphone: %s', CONFIG.MICROPHONE) # マイクとの接続不可
     logger.info('DeviceIndex: %d', DETECT_PARAMETER.DeviceIndex)
 
 def get_wave():

@@ -7,7 +7,6 @@ FORMAT = pyaudio.paInt16 # -32768 ~ +32767
 CHANNELS = 1
 CHUNKS = 2**10
 
-MICROPHONE = ''
 DeviceIndex = -1
 
 # 判定する区間の秒数
